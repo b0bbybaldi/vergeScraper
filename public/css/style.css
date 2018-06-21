@@ -1,0 +1,19 @@
+body { 
+    background-color: black 
+}
+
+#wrapper {
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5%;
+    color: orange;
+}
+
+#articles {
+    display: inline-block;
+    overflow: auto;
+    width: 60%;
+    height: 700px;
+    color: white
+}
