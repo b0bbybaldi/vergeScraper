@@ -5,15 +5,26 @@ var mongoose = require("mongoose");
 var axios = require("axios");
 var cheerio = require("cheerio");
 
-var db = require("./models");
-
-var PORT = 1992;
+var exphbs = require("express-handlebars");
 
 var app = express();
+var PORT = process.env.PORT || 1992;
+
+var db = require("./models");
 
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.engine("handlebars", exphbs({defaultLayout: "main"}));
+app.set("view engine", "handlebars");
+
 app.use(express.static("public"));
+
+require("./controllers/html-routes")(app);
+require("./controllers/scrape")(app);
+require("./controllers/articles")(app);
+require("./controllers/notes")(app);
 
 mongoose.connect("mongodb://localhost/vergeScraper");
 
