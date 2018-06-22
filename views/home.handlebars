@@ -1,0 +1,51 @@
+<div class="container">
+  <div id="wrapper">
+    <div class="jumbotron">
+      <h1 class="display-4">The Verge Scrapper</h1>
+      <p class="lead">Get the latest news in Tech, Science, and Culture</p>
+      <hr class="my-4">
+      <a class="btn btn-primary btn-lg" href="/tech" role="button">Tech</a>
+      <a class="btn btn-primary btn-lg" href="/science" role="button">Science</a>
+      <a class="btn btn-primary btn-lg" href="/culture" role="button">Culture</a>
+      <br><br>
+      <a class="btn btn-primary btn-lg" id="getarticles" role="button">Get Articles</a>
+    </div>
+    {{#each articles}} {{#unless saved}} {{#if link}}
+    <a href="{{link}}" target="_blank">
+      <h2>{{title}}</h2>
+    </a>
+    {{else}}
+    <h3>{{title}}</h3>
+    {{/if}}
+    <button id="saveArticle" data-id="{{_id}}">Save Article</button>
+    {{/unless}} {{/each}}
+
+    <div id="alertModal" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body text-center">
+            <h2>
+              <span id="numArticles"></span> new articles scrapped succesfully!</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="error" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <h2>Error scraping articles :/</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

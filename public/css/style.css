@@ -1,5 +1,5 @@
 body { 
-    background-color: black 
+    background-color: black;
 }
 
 #wrapper {
@@ -15,5 +15,5 @@ body {
     overflow: auto;
     width: 60%;
     height: 700px;
-    color: white
+    color: white;
 }
