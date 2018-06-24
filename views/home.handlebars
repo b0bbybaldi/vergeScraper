@@ -8,17 +8,8 @@
       <a class="btn btn-primary btn-lg" href="/science" role="button">Science</a>
       <a class="btn btn-primary btn-lg" href="/culture" role="button">Culture</a>
       <br><br>
-      <a class="btn btn-primary btn-lg" id="getarticles" role="button">Get Articles</a>
+      <a class="btn btn-primary btn-lg" id="getarticles" href="/unsaved" role="button">Get Articles</a>
     </div>
-    {{#each articles}} {{#unless saved}} {{#if link}}
-    <a href="{{link}}" target="_blank">
-      <h2>{{title}}</h2>
-    </a>
-    {{else}}
-    <h3>{{title}}</h3>
-    {{/if}}
-    <button id="saveArticle" data-id="{{_id}}">Save Article</button>
-    {{/unless}} {{/each}}
 
     <div id="alertModal" class="modal fade" role="dialog">
       <div class="modal-dialog modal-md">

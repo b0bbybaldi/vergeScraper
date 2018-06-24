@@ -4,6 +4,8 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var axios = require("axios");
 var cheerio = require("cheerio");
+var request = require("request");
+var method = require("method-override");
 
 var exphbs = require("express-handlebars");
 
@@ -18,11 +20,10 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/vergeScraper";
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
 
-
 var db = require("./models");
 
 app.use(logger("dev"));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
@@ -33,8 +34,11 @@ app.use(express.static("public"));
 require("./controllers/html-routes")(app);
 require("./controllers/articles-controller")(app);
 require("./controllers/notes-controller")(app);
+require("./controllers/saved-controller")(app);
+// require("./controllers/unsaved-controller")(app);
 
-mongoose.connect(MONGODB_URI);
+var unsaved = require("./controllers/unsaved-controller")
+app.use(unsaved);
 
 app.listen(PORT, function () {
     console.log("App running on port " + PORT + "!");

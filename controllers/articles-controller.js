@@ -1,16 +1,15 @@
 var db = require("../models");
 var axios = require("axios");
 var cheerio = require("cheerio");
+// var express = require("express");
+// var router = express.Router();
 
 module.exports = function (app){
     
     app.get("/tech", function (req, res) {
-    
         axios.get("https://www.theverge.com/tech").then(function (response) {
             var $ = cheerio.load(response.data);
-    
             $("div h2").each(function (i, element) {
-    
                 var result = {};
                 result.title = $(this)
                     .children("a")
@@ -18,16 +17,15 @@ module.exports = function (app){
                 result.link = $(this)
                     .children("a")
                     .attr("href");
-                    console.log("this is results", result);
+   //                 console.log("this is results", result);
                 db.Article.create(result)
                     .then(function (dbArticle) {
-                        console.log(dbArticle);
+   //                     console.log(dbArticle);
                     })
                     .catch(function (err) {
                         return res.json(err);
                     });
-            });
-    
+            });     
             res.render("home");
         });
     });
@@ -36,9 +34,7 @@ module.exports = function (app){
     
         axios.get("https://www.theverge.com/science").then(function (response) {
             var $ = cheerio.load(response.data);
-    
             $("div h2").each(function (i, element) {
-    
                 var result = {};
                 result.title = $(this)
                     .children("a")
@@ -46,16 +42,15 @@ module.exports = function (app){
                 result.link = $(this)
                     .children("a")
                     .attr("href");
-                    console.log("this is results", result);
+                  //  console.log("this is results", result);
                 db.Article.create(result)
                     .then(function (dbArticle) {
-                        console.log(dbArticle);
+                    //    console.log(dbArticle);
                     })
                     .catch(function (err) {
                         return res.json(err);
                     });
             });
-    
             res.render("home");
         });
     });
@@ -64,9 +59,8 @@ module.exports = function (app){
     
         axios.get("https://www.theverge.com/culture").then(function (response) {
             var $ = cheerio.load(response.data);
-    
+
             $("div h2").each(function (i, element) {
-    
                 var result = {};
                 result.title = $(this)
                     .children("a")
@@ -74,29 +68,40 @@ module.exports = function (app){
                 result.link = $(this)
                     .children("a")
                     .attr("href");
-                    console.log("this is results", result);
+                  //  console.log("this is results", result);
                 db.Article.create(result)
                     .then(function (dbArticle) {
-                        console.log(dbArticle);
+                  //      console.log(dbArticle);
                     })
                     .catch(function (err) {
                         return res.json(err);
                     });
             });
-    
             res.render("home");
         });
     });
     
-    app.get("/articles", function (req, res) {
-        db.Article.find({})
-            .then(function (dbArticle) {
-                res.json(dbArticle);
-            })
-            .catch(function (err) {
-                res.json(err);
-            });
-    });
-
-    
+    // app.get("/articles", function (req, res) {
+    //     console.log("this is res", res.body)
+    //    // res.render("saved")
+    //     db.Article.find({}
+    //     //    res.render("saved", {articles:data})    
+    //     )
+    //         .then(function (data) {
+    //           //  console.log("this is dbArticle", dbArticle.json())
+    //             // var hbsObj = {
+    //             //     articles: [],
+    //             // }
+    //             // dbArticle.forEach(function(item){
+    //             //     hbsObj.articles.push(articles.dataValues);
+    //             // })
+    //             // console.log(dbArticle.json())
+    //             res.render("unsaved", {articles:data});
+    //             // res.json(dbArticle);
+    //         })
+    //         .catch(function (err) {
+    //             res.json(err);
+    //         });
+    // });
 }
+

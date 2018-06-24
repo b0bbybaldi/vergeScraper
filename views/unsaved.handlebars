@@ -1,6 +1,6 @@
 <div class="container">
   <div id="wrapper">
-    {{#each articles}} {{#if saved}} 
+    {{#each articles}} {{#unless saved}} {{#if link}}
     <a href="{{link}}" target="_blank">
       <h2>{{title}}</h2>
     </a>
@@ -8,6 +8,6 @@
     <h3>{{title}}</h3>
     {{/if}}
     <button id="saveArticle" data-id="{{_id}}">Save Article</button>
-    {{/each}}
+    {{/unless}} {{/each}}
   </div>
 </div>
