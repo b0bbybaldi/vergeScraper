@@ -81,27 +81,5 @@ module.exports = function (app){
         });
     });
     
-    // app.get("/articles", function (req, res) {
-    //     console.log("this is res", res.body)
-    //    // res.render("saved")
-    //     db.Article.find({}
-    //     //    res.render("saved", {articles:data})    
-    //     )
-    //         .then(function (data) {
-    //           //  console.log("this is dbArticle", dbArticle.json())
-    //             // var hbsObj = {
-    //             //     articles: [],
-    //             // }
-    //             // dbArticle.forEach(function(item){
-    //             //     hbsObj.articles.push(articles.dataValues);
-    //             // })
-    //             // console.log(dbArticle.json())
-    //             res.render("unsaved", {articles:data});
-    //             // res.json(dbArticle);
-    //         })
-    //         .catch(function (err) {
-    //             res.json(err);
-    //         });
-    // });
 }
 

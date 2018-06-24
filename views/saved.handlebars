@@ -1,7 +1,12 @@
 <div class="container">
     <div id="wrapper">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">Saved Articles</h1>
+            </div>
+        </div>
         {{#each articles}} {{#if saved}}
-        <div class="card" style="width: 80%;">
+        <div class="card" style="width: 54rem;">
             <div class="card-body">
                 <h5 class="card-title">
                     <a href="{{link}}" target="_blank">
@@ -11,7 +16,7 @@
             </div>
         </div>
         {{else}}
-        <div class="card" style="width: 80%;">
+        <div class="card" style="width: 54rem;">
             <div class="card-body">
                 <h5 class="card-title">
                     {{title}}
@@ -19,8 +24,44 @@
             </div>
         </div>
         {{/if}}
+        <button id="deleteArticle" data-id="{{_id}}">Add a Note</button>
         <button id="deleteArticle" data-id="{{_id}}">Delete Article</button>
-        <br><br>
-        {{/each}}
+        <br>
+        <br> {{/each}}
+
+    <div id="noteModal" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-center">Add a note</h4>
+          </div>
+          <div class="modal-body text-center">
+            <input type="text" id="noteTitle" class="noteIn" placeholder="Note Title">
+          <input type="text" id="noteBody" class="noteIn" placeholder="Note Body">
+          <div id="noteText"></div>
+          </div>
+         <div class="modal-footer">
+          <button type="button" id="saveNote">Save</button>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="errorNote" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <h2>Error processing notes request... :/</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     </div>
 </div>
+
