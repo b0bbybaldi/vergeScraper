@@ -1,13 +1,26 @@
 <div class="container">
-  <div id="wrapper">
-    {{#each articles}} {{#if saved}} 
-    <a href="{{link}}" target="_blank">
-      <h2>{{title}}</h2>
-    </a>
-    {{else}}
-    <h3>{{title}}</h3>
-    {{/if}}
-    <button id="saveArticle" data-id="{{_id}}">Save Article</button>
-    {{/each}}
-  </div>
+    <div id="wrapper">
+        {{#each articles}} {{#if saved}}
+        <div class="card" style="width: 80%;">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="{{link}}" target="_blank">
+                        {{title}}
+                    </a>
+                </h5>
+            </div>
+        </div>
+        {{else}}
+        <div class="card" style="width: 80%;">
+            <div class="card-body">
+                <h5 class="card-title">
+                    {{title}}
+                </h5>
+            </div>
+        </div>
+        {{/if}}
+        <button id="deleteArticle" data-id="{{_id}}">Delete Article</button>
+        <br><br>
+        {{/each}}
+    </div>
 </div>

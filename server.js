@@ -34,11 +34,12 @@ app.use(express.static("public"));
 require("./controllers/html-routes")(app);
 require("./controllers/articles-controller")(app);
 require("./controllers/notes-controller")(app);
-require("./controllers/saved-controller")(app);
-// require("./controllers/unsaved-controller")(app);
 
 var unsaved = require("./controllers/unsaved-controller")
 app.use(unsaved);
+
+var saved = require("./controllers/saved-controller")
+app.use(saved);
 
 app.listen(PORT, function () {
     console.log("App running on port " + PORT + "!");
