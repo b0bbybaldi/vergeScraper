@@ -12,7 +12,7 @@ mongoose.connect(MONGODB_URI)
 
 router.get("/saved", function(req,res){
     db.Article.find({saved:true}).populate("note").then(function(savedArticle){
-        console.log("this are the articles:", savedArticle)
+    //    console.log("this are the articles:", savedArticle)
         res.render("saved", {articles: savedArticle});
     }).catch(function(err){
         res.json(err);

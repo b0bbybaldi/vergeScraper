@@ -12,7 +12,7 @@ mongoose.connect(MONGODB_URI)
 
 router.get("/unsaved", function(req,res){
     db.Article.find({saved:false}).populate("note").then(function(unsavedArticle){
-        console.log("this are the articles:", unsavedArticle)
+   //     console.log("this are the articles:", unsavedArticle)
         res.render("unsaved", {articles: unsavedArticle});
     }).catch(function(err){
         res.json(err);
@@ -23,7 +23,7 @@ router.get("/save/:id", function(req,res){
     console.log("hi");
     console.log(req.params.id)
     db.Article.update({_id: req.params.id}, {saved:true}).then(function(result){
-        console.log(result);
+ //       console.log(result);
         res.redirect("/")
     }).catch(function(err){
         res.json(err);

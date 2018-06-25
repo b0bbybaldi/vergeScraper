@@ -7,21 +7,21 @@ $(document).ready(function(){
         note.body = $("#noteBodyEntry").val().trim();
         if(note.title && note.body){
             $.ajax({
-                url: "/notes-controller/makenote",
+                url: "/makenote",
                 type: "POST",
                 data: note,
                 success: function(res){
                     showNote(res, note.articleId);
                     $("#noteBody, #noteTitle".val(""));
                 },
-                error: function (error){
-                    showError(error);
+                error: function (){
+                    showError();
                 }
             })
         }
     }
 
-    var showError= function(error){
+    var showError = function(){
         $("#errorNote").modal("show");
         $("#errorHome").modal("show");
     }
@@ -41,18 +41,18 @@ $(document).ready(function(){
         .appendTo("noteText");
     }
 
-    $("#alertModal").on("hide.bs.modal", function(event){
+    $("#alertModal").on("hide.bs.modal", function(){
         // event.preventDefault();
         window.location.href = "/";
     });
     
-    $(document).on("click", "#saveArticle", function(event){
+    $(document).on("click", "#saveArticle", function(){
         var articleId = $(this).data("id");
         $.ajax({
-            url: "/unsaved-controller/save/"+articleId,
-            type: "PUT",
-            success: function (response){
-                window.location.href = "/";
+            url: "/save/"+articleId,
+            type: "GET",
+            success: function (){
+                window.location.href = "/saved";
             },
             error: function(error){
                 showError(error);
@@ -60,13 +60,13 @@ $(document).ready(function(){
         });
     });
 
-    $(".addNote").on("click", function(event){
+    $(".addNote").on("click", function(){
         $("#noteText").empty();
         $("#noteTitle, #noteBody").val("");
         var id = $(this).data("id");
         $("#saveNote, #noteBody").attr("data-id", id);
         $.ajax({
-            url: "/notes-controller/getnotes/"+id,
+            url: "/getnotes/"+id,
             type: "GET",
             success: function (data){
                 $.each(data.notes, function(i, item){
@@ -97,7 +97,7 @@ $(document).ready(function(){
         $.ajax({
             url:"/saved-controller/deleteArticle"+id,
             type: "DELETE",
-            success: function(response){
+            success: function(){
                 window.location.href = "/saved";
             },
             error: function(error){
@@ -114,7 +114,7 @@ $(document).ready(function(){
             articleId: $(this).parent().data("article-id")
         };
         $ajax({
-            url: "/notes-controller/deleteNote/"+id,
+            url: "/deleteNote/"+id,
             type: "POST",
             data: ids,
             success: function(res){
@@ -130,7 +130,7 @@ $(document).ready(function(){
         event.stopPropagation();
         var id = $(this).data("note-id");
         $.ajax({
-            url: "/notes-controller/getonenote/"+id,
+            url: "/getonenote/"+id,
             type: "GET",
             success: function(note){
                 $("#noteTitle").val(note.title);

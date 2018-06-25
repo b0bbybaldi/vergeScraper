@@ -12,7 +12,7 @@ mongoose.connect(MONGODB_URI)
 
 router.get("/getnotes/:id", function (req, res) {
     db.Article.findOne({ id: req.params.id }).populate("note").then(function (resNotes) {
-        console.log("this are the notes:", resNotes)
+    //    console.log("this are the notes:", resNotes)
         res.json(resNotes)
     }).catch(function (err) {
         res.json(err);
@@ -21,7 +21,7 @@ router.get("/getnotes/:id", function (req, res) {
 
 router.get("/getonenote/:id", function (req, res) {
     db.Note.findOne({ id: req.params.id }).then(function (resNote) {
-        console.log("this are the notes:", resNote)
+    //    console.log("this are the notes:", resNote)
         res.json(resNote)
     }).catch(function (err) {
         res.json(err);
