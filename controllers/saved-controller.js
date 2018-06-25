@@ -19,4 +19,12 @@ router.get("/saved", function(req,res){
     })
 });
 
+router.delete("/deleteArticle/:id", function(req,res){
+    db.Article.remove({_id: req.params.id}).then(function(result){
+        res.json(result);
+    }).catch(function(err){
+        res.json(err);
+    })
+})
+
 module.exports = router;

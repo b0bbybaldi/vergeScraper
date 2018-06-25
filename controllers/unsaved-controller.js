@@ -19,4 +19,12 @@ router.get("/unsaved", function(req,res){
     })
 });
 
+router.get("/save/:id", function(req,res){
+    db.Article.update({_id: req.params.id}, {saved:true}).then(function(result){
+        res.redirect("/")
+    }).catch(function(err){
+        res.json(err);
+    })
+})
+
 module.exports = router;
