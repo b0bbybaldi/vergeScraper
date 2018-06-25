@@ -16,7 +16,7 @@ $(document).ready(function(){
                 },
                 error: function (error){
                     showError(error);
-                };
+                }
             })
         }
     }
@@ -50,7 +50,7 @@ $(document).ready(function(){
         var articleId = $(this).data("id");
         $.ajax({
             url: "/unsaved-controller/save/"+articleId,
-            type: "GET",
+            type: "PUT",
             success: function (response){
                 window.location.href = "/";
             },

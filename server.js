@@ -7,6 +7,7 @@ var cheerio = require("cheerio");
 var request = require("request");
 var method = require("method-override");
 
+
 var exphbs = require("express-handlebars");
 
 var app = express();
@@ -33,7 +34,9 @@ app.use(express.static("public"));
 
 require("./controllers/html-routes")(app);
 require("./controllers/articles-controller")(app);
-require("./controllers/notes-controller")(app);
+
+var notes = require("./controllers/notes-controller")
+app.use(notes);
 
 var unsaved = require("./controllers/unsaved-controller")
 app.use(unsaved);
