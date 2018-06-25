@@ -47,7 +47,7 @@ router.get("/makenote", function(req,res){
         res.json(err);
 })
 
-router.post('deleteNote', function(req,res){
+router.post('/deleteNote', function(req,res){
     req.body = {articleId, noteId}
     db.Note
         .remove({_id: noteId})

@@ -31,7 +31,6 @@ module.exports = function (app){
     });
     
     app.get("/science", function (req, res) {
-    
         axios.get("https://www.theverge.com/science").then(function (response) {
             var $ = cheerio.load(response.data);
             $("div h2").each(function (i, element) {
@@ -56,10 +55,8 @@ module.exports = function (app){
     });
     
     app.get("/culture", function (req, res) {
-    
         axios.get("https://www.theverge.com/culture").then(function (response) {
             var $ = cheerio.load(response.data);
-
             $("div h2").each(function (i, element) {
                 var result = {};
                 result.title = $(this)
@@ -80,6 +77,5 @@ module.exports = function (app){
             res.render("home");
         });
     });
-    
 }
 
