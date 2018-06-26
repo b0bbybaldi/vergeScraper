@@ -20,7 +20,6 @@ router.get("/unsaved", function(req,res){
 });
 
 router.get("/save/:id", function(req,res){
-    console.log("hi");
     console.log(req.params.id)
     db.Article.update({_id: req.params.id}, {saved:true}).then(function(result){
  //       console.log(result);

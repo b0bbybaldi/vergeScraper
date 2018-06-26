@@ -32,38 +32,38 @@
         <br>
         <br> {{/each}}
 
-    <div id="noteModal" class="modal fade" role="dialog">
-      <div class="modal-dialog modal-md">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title text-center">Add a note</h4>
-          </div>
-          <div class="modal-body text-center">
-            <input type="text" id="noteTitle" class="noteIn" placeholder="Note Title">
-          <input type="text" id="noteBody" class="noteIn" placeholder="Note Body">
-          <div id="noteText"></div>
-          </div>
-         <div class="modal-footer">
-          <button type="button" id="saveNote">Save</button>
+        <div id="noteModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title text-center">Add a note</h4>
+                    </div>
+                    <div class="modal-body text-center">
+                        <input type="text" id="noteTitle" class="noteIn" placeholder="Note Title">
+                        <br>
+                        <input type="text" id="noteBody" class="noteIn" placeholder="Note Body">
+                        <div id="noteText"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="saveNote">Save</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        </div>
-      </div>
-    </div>
 
-    <div id="errorNote" class="modal fade" role="dialog">
-      <div class="modal-dialog modal-md">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-          <div class="modal-body">
-            <h2>Error processing notes request... :/</h2>
-          </div>
+        <div id="errorNote" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <h2>Error processing notes request... :/</h2>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
     </div>
 </div>
-
