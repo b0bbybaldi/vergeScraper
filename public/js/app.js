@@ -60,24 +60,31 @@ $(document).ready(function(){
         });
     });
 
-    $(".addNote").on("click", function(){
+    $(".addNote").on("click", function(event){
         $("#noteText").empty();
         $("#noteTitle, #noteBody").val("");
         var id = $(this).data("id");
+        console.log(id)
         $("#saveNote, #noteBody").attr("data-id", id);
         $.ajax({
             url: "/getnotes/"+id,
-            type: "GET",
-            success: function (data){
-                $.each(data.notes, function(i, item){
-                    showNote(item, id);
-                });
-                $("#noteModal").modal("show");
-            },
-            error: function(error){
-                showError(error);
-            }
-        });
+            type: "GET"
+            // ,
+            // success: function (data){
+            //     $.each(data.notes, function(i, item){
+            //         showNote(item, id);
+            //     });
+            //     $("#noteModal").modal("show");
+            // },
+            // error: function(error){
+            //     showError(error);
+            // }
+        }).then(function(data){
+            $.each(data.notes, function(i,item){
+                showNote(item,id);
+            });
+            $("#noteModal").modal("show");
+        })
     });
 
     $("#saveNote").on("click", function(event){
@@ -95,7 +102,7 @@ $(document).ready(function(){
         event.preventDefault();
         var id = $(this).data("id");
         $.ajax({
-            url:"/saved-controller/deleteArticle"+id,
+            url:"/deleteArticle/"+id,
             type: "DELETE",
             success: function(){
                 window.location.href = "/saved";
